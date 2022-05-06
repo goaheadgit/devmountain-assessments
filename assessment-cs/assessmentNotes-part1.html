@@ -1,0 +1,34 @@
+Assessment Notes
+
+First Results:
+Results for the extraLargeArray
+insert 773.230375 ms
+append 2.056 ms
+
+The unshift function takes about 386x longer to run than the append function.
+
+Second Results:
+Results for the extraLargeArray
+insert 771.904208 ms
+append 2.255791 ms
+Results for the largeArray
+insert 6.250208 ms
+append 387.167 μs
+Results for the mediumArray
+insert 962.917 μs
+append 722.292 μs
+Results for the smallArray
+insert 52.583 μs
+append 1.875 μs
+Results for the tinyArray
+insert 1.16675 ms
+append 1.542 μs
+
+Size: insert; append
+XL: 771ms; 2ms
+L: 6ms; 387μs
+M: 962μs; 722μs
+S: 52μs; 2μs
+T: 1.1μs; 1.5μs
+
+The insert (or unshift) function does not scale well in comparison to the append function. As the arrays grow larger, the runtime of the insert function increases at a much more exponential scale than the much more slowly increasing append function. At the scale of a tiny array, the runtime is nearly the same, but by the time we reach an extra large array, insert is over 300 times slower. This is because unshift will shift the position of every single item in the array, every time it is used. Push merely adds to the end of the array. 
